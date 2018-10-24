@@ -8,7 +8,7 @@
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
     <RootNamespace>FrontierDevelopments</RootNamespace>
-    <AssemblyName>FrontierDevelopments-Toggleable-ShieldBelt</AssemblyName>
+    <AssemblyName>FrontierDevelopments-UtilityBelts</AssemblyName>
     <TargetFrameworkVersion>v3.5</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
     <TargetFrameworkProfile />
@@ -61,11 +61,11 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="ShieldBelt\CompPropertiesShieldToggle.cs" />
-    <Compile Include="ShieldBelt\CompShieldToggle.cs" />
-    <Compile Include="ShieldBelt\Harmony\Harmony_ShieldBelt.cs" />
-    <Compile Include="ShieldBelt\Harmony\Harmony_SmokepopBelt.cs" />
-    <Compile Include="ShieldBelt\Mod.cs" />
+    <Compile Include="UtilityBelts\CompPropertiesShieldToggle.cs" />
+    <Compile Include="UtilityBelts\CompShieldToggle.cs" />
+    <Compile Include="UtilityBelts\Harmony\Harmony_ShieldBelt.cs" />
+    <Compile Include="UtilityBelts\Harmony\Harmony_SmokepopBelt.cs" />
+    <Compile Include="UtilityBelts\Mod.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

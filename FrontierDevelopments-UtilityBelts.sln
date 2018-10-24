@@ -3,7 +3,7 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 14
 VisualStudioVersion = 14.0.24720.0
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{933eb72a-0e6d-4cba-8097-931e23114742}") = "FrontierDevelopments-Toggleable-ShieldBelt", "Source\FrontierDevelopments-Toggleable-ShieldBelt.csproj", "{0c7d659a-fe2a-49a0-9ea6-11524b13c9e0}"
+Project("{933eb72a-0e6d-4cba-8097-931e23114742}") = "FrontierDevelopments-UtilityBelts", "Source\FrontierDevelopments-UtilityBelts.csproj", "{0c7d659a-fe2a-49a0-9ea6-11524b13c9e0}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

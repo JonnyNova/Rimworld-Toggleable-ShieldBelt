@@ -1,9 +1,7 @@
 using System;
 using System.Collections.Generic;
-using System.Linq;
 using System.Reflection.Emit;
 using Harmony;
-using RimWorld;
 using Verse;
 
 namespace FrontierDevelopments.ShieldBelt.Harmony

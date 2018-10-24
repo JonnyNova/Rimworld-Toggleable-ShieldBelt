@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
 <Manifest>
-    <identifier>FrontierDevelopments-Toggleable-ShieldBelt</identifier>
-    <version>0.0.1.2059</version>
+    <identifier>FrontierDevelopments-UtilityBelts</identifier>
+    <version>0.0.2.2059</version>
     <dependencies>
     </dependencies>
     <incompatibleWith>
@@ -13,6 +13,6 @@
     <suggests>
     </suggests>
     <showCrossPromotions>true</showCrossPromotions>
-    <manifestUri>https://raw.githubusercontent.com/JonnyNova/Rimworld-Toggleable-ShieldBelt/master/About/Manifest.xml</manifestUri>
-    <downloadUri>https://github.com/JonnyNova/Rimworld-Toggleable-ShieldBelt/releases/latest</downloadUri>
+    <manifestUri>https://raw.githubusercontent.com/JonnyNova/Rimworld-UtilityBelts/master/About/Manifest.xml</manifestUri>
+    <downloadUri>https://github.com/JonnyNova/Rimworld-UtilityBelts/releases/latest</downloadUri>
 </Manifest>
