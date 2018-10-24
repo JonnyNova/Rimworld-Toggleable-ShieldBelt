@@ -74,26 +74,17 @@ namespace FrontierDevelopments.ShieldBelt.Harmony
         [HarmonyPatch(typeof(RimWorld.ShieldBelt), nameof(RimWorld.ShieldBelt.GetWornGizmos))]
         public class Harmony_ShieldBelt_GetWornGizmos
         {
-            public static bool Prefix(RimWorld.ShieldBelt __instance, out IEnumerable<Gizmo> __result)
+            public static IEnumerable<Gizmo> Postfix(IEnumerable<Gizmo> __result, RimWorld.ShieldBelt __instance)
             {
-                var result = new List<Gizmo>();
-                
-                // TODO use a friendlier patch
-                if (Find.Selector.SingleSelectedThing == __instance.Wearer)
+                foreach (var gizmo in __result)
                 {
-                    result.Add(new Gizmo_EnergyShieldStatus
-                    {
-                        shield = __instance
-                    });
+                    yield return gizmo;
                 }
                 
                 foreach (var gizmo in __instance.GetComp<CompShieldToggle>().CompGetGizmosExtra())
                 {
-                    result.Add(gizmo);
+                    yield return gizmo;
                 }
-
-                __result = result.AsEnumerable();
-                return false;
             }
         }
     }
