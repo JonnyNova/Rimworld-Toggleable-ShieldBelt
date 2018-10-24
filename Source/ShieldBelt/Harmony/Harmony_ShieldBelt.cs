@@ -80,10 +80,14 @@ namespace FrontierDevelopments.ShieldBelt.Harmony
                 {
                     yield return gizmo;
                 }
-                
-                foreach (var gizmo in __instance.GetComp<CompShieldToggle>().CompGetGizmosExtra())
+
+                var comp = __instance.GetComp<CompShieldToggle>();
+                if (comp != null)
                 {
-                    yield return gizmo;
+                    foreach (var gizmo in comp.CompGetGizmosExtra())
+                    {
+                        yield return gizmo;
+                    }
                 }
             }
         }
