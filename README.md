@@ -2,7 +2,7 @@
 
 ## Features
 
-Allows toggling worn shield belts.
+Allows toggling of shield belts and manually triggering smoke pop belts.
 
 #### Languages
 - English

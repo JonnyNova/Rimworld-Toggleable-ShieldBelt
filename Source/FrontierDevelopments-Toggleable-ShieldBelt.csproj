@@ -64,6 +64,7 @@
     <Compile Include="ShieldBelt\CompPropertiesShieldToggle.cs" />
     <Compile Include="ShieldBelt\CompShieldToggle.cs" />
     <Compile Include="ShieldBelt\Harmony\Harmony_ShieldBelt.cs" />
+    <Compile Include="ShieldBelt\Harmony\Harmony_SmokepopBelt.cs" />
     <Compile Include="ShieldBelt\Mod.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

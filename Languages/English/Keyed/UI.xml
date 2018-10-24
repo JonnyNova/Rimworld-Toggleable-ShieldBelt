@@ -2,4 +2,7 @@
 <LanguageData>
     <FrontierDevelopments.ShieldBelt.Toggle.Label>Enable</FrontierDevelopments.ShieldBelt.Toggle.Label>
     <FrontierDevelopments.ShieldBelt.Toggle.Desc>Enables a worn shield belt</FrontierDevelopments.ShieldBelt.Toggle.Desc>
+
+    <FrontierDevelopments.SmokepopBelt.Toggle.Label>Trigger</FrontierDevelopments.SmokepopBelt.Toggle.Label>
+    <FrontierDevelopments.SmokepopBelt.Toggle.Desc>Manually triggers a smokepop belt</FrontierDevelopments.SmokepopBelt.Toggle.Desc>
 </LanguageData>
