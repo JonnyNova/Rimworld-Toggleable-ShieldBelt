@@ -7,7 +7,7 @@ namespace FrontierDevelopments.ShieldBelt
 {
     public class CompShieldToggle : ThingComp
     {
-        public bool enabled;
+        public bool enabled = true;
 
         public override IEnumerable<Gizmo> CompGetGizmosExtra()
         {
