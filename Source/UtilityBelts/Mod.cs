@@ -1,4 +1,6 @@
 ﻿using System;
+using System.Collections.Generic;
+using System.Linq;
 using Harmony;
 using RimWorld;
 using UnityEngine;
@@ -28,13 +30,34 @@ namespace FrontierDevelopments.UtilityBelts
             {
                 try
                 {
-                    ThingDefOf.Apparel_ShieldBelt.comps.Add(new CompPropertiesShieldToggle());
-                    Log.Message("Frontier Developments Toggleable Shield Belt :: Loaded");
+                    var typeShieldBelt = typeof(ShieldBelt);
+                    var names = new List<string>();
+                    
+                    foreach(var def in DefDatabase<ThingDef>.AllDefs)
+                    {
+                        try
+                        {
+                            if (def != null && def.thingClass == typeShieldBelt)
+                            {
+                                def.comps.Add(new CompPropertiesShieldToggle());
+                                if (!def.defName.NullOrEmpty())
+                                    names.Add(def.defName);
+                                else
+                                    names.Add("unknown_defName");
+                            }
+                        }
+                        catch (Exception e)
+                        {
+                            Log.Warning("Frontier Developments Toggleable Shield Belt :: Failed to process def " + def?.defName + ", " + e.Message);
+                        }
+                    }
+                    Log.Message("Frontier Developments Toggleable Shield Belt :: Loaded. Adding shield toggle to: " 
+                                + names.Aggregate("", (current, next) => current + " " + next));
                 }
                 catch (Exception e)
                 {
                     Log.Warning(
-                        "Frontier Developments Toggleable Shield Belt :: Failed to patch shield belt with: " +
+                        "Frontier Developments Toggleable Shield Belt :: Failed to patch shield belts with: " +
                         e.Message);
                 }
             }
