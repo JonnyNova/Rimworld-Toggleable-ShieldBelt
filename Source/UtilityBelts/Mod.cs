@@ -29,7 +29,6 @@ namespace FrontierDevelopments.ShieldBelt
                 try
                 {
                     ThingDefOf.Apparel_ShieldBelt.comps.Add(new CompPropertiesShieldToggle());
-                    Log.Message(ThingDefOf.Apparel_ShieldBelt.graphicData.texPath);
                     Log.Message("Frontier Developments Toggleable Shield Belt :: Loaded");
                 }
                 catch (Exception e)
