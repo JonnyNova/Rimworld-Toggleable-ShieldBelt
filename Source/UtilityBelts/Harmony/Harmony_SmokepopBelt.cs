@@ -4,7 +4,7 @@ using Harmony;
 using RimWorld;
 using Verse;
 
-namespace FrontierDevelopments.ShieldBelt.Harmony
+namespace FrontierDevelopments.UtilityBelts.Harmony
 {
     public class Harmony_SmokepopBelt
     {
@@ -14,7 +14,7 @@ namespace FrontierDevelopments.ShieldBelt.Harmony
         public class Harmony_ShieldBelt_GetWornGizmos
         {
             
-            public static IEnumerable<Gizmo> Postfix(IEnumerable<Gizmo> __result, RimWorld.SmokepopBelt __instance)
+            public static IEnumerable<Gizmo> Postfix(IEnumerable<Gizmo> __result, SmokepopBelt __instance)
             {
                 foreach (var gizmo in __result)
                 {

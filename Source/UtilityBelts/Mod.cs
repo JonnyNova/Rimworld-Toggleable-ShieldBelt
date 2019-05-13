@@ -4,7 +4,7 @@ using RimWorld;
 using UnityEngine;
 using Verse;
 
-namespace FrontierDevelopments.ShieldBelt
+namespace FrontierDevelopments.UtilityBelts
 {
     public class Mod : Verse.Mod
     {

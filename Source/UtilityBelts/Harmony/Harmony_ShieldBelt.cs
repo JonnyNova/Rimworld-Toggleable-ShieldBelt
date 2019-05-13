@@ -4,7 +4,7 @@ using System.Reflection.Emit;
 using Harmony;
 using Verse;
 
-namespace FrontierDevelopments.ShieldBelt.Harmony
+namespace FrontierDevelopments.UtilityBelts.Harmony
 {
     public class Harmony_ShieldBelt
     {
