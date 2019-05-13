@@ -42,10 +42,15 @@ namespace FrontierDevelopments.ShieldBelt.Harmony
         [HarmonyPatch(typeof(RimWorld.ShieldBelt), nameof(RimWorld.ShieldBelt.AllowVerbCast))]
         public class Harmony_ShieldBelt_AllowVerbCast
         {
-            [HarmonyTranspiler]
-            public static IEnumerable<CodeInstruction> Transpiler(IEnumerable<CodeInstruction> instructions, ILGenerator il)
+            public static bool Postfix(
+                bool __result, 
+                RimWorld.ShieldBelt __instance, 
+                IntVec3 root, 
+                Map map,
+                LocalTargetInfo targ, 
+                Verb verb)
             {
-                return CheckFirst(instructions, il, true, true);
+                return !IsEnabled(__instance) || __result;
             }
         }
         
