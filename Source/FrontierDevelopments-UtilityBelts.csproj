@@ -4,7 +4,7 @@
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
-    <ProjectGuid>{D90E6072-FBE5-4A86-A1E1-11E12DC5E27B}</ProjectGuid>
+    <ProjectGuid>{0c7d659a-fe2a-49a0-9ea6-11524b13c9e0}</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
     <RootNamespace>FrontierDevelopments</RootNamespace>
@@ -48,14 +48,6 @@
     <Reference Include="System.Xml" />
     <Reference Include="UnityEngine">
       <HintPath>..\..\..\RimWorldWin_Data\Managed\UnityEngine.dll</HintPath>
-      <Private>False</Private>
-    </Reference>
-    <Reference Include="CrashLanding">
-      <HintPath>..\..\..\Mods\CrashLanding\Assemblies\CrashLanding.dll</HintPath>
-      <Private>False</Private>
-    </Reference>
-    <Reference Include="CentralizedClimateControl">
-      <HintPath>..\..\CentralizedClimateControlMod\Assemblies\CentralizedClimateControl.dll</HintPath>
       <Private>False</Private>
     </Reference>
   </ItemGroup>
