@@ -4,12 +4,12 @@ using System.Runtime.InteropServices;
 // General Information about an assembly is controlled through the following 
 // set of attributes. Change these attribute values to modify the information
 // associated with an assembly.
-[assembly: AssemblyTitle("FrontierDevelopments-Toggleable-ShieldBelt")]
+[assembly: AssemblyTitle("FrontierDevelopments-UtilityBelts")]
 [assembly: AssemblyDescription("")]
 [assembly: AssemblyConfiguration("")]
 [assembly: AssemblyCompany("")]
 [assembly: AssemblyProduct("FrontierDevelopments-UtilityBelts")]
-[assembly: AssemblyCopyright("Copyright ©  2018")]
+[assembly: AssemblyCopyright("Copyright ©  2019")]
 [assembly: AssemblyTrademark("")]
 [assembly: AssemblyCulture("")]
 
@@ -30,5 +30,5 @@ using System.Runtime.InteropServices;
 //
 // You can specify all the values or you can default the Build and Revision Numbers 
 // by using the '*' as shown below:
-[assembly: AssemblyVersion("0.0.3.2231")]
-[assembly: AssemblyFileVersion("0.0.3.2231")]
+[assembly: AssemblyVersion("1.0.0.2231")]
+[assembly: AssemblyFileVersion("1.0.0.2231")]
