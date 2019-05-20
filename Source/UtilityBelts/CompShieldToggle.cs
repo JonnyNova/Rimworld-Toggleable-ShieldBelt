@@ -5,6 +5,14 @@ using Verse;
 
 namespace FrontierDevelopments.UtilityBelts
 {
+    public class CompPropertiesShieldToggle : CompProperties
+    {
+        public CompPropertiesShieldToggle()
+        {
+            compClass = typeof(CompShieldToggle);
+        }
+    }
+
     public class CompShieldToggle : ThingComp
     {
         public static bool IsEnabled(ThingWithComps shieldBelt)

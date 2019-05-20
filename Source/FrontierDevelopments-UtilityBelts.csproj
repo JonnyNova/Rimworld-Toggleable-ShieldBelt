@@ -54,7 +54,6 @@
   <ItemGroup>
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="UtilityBelts\AvoidFriendlyFire\Harmony_FireManager.cs" />
-    <Compile Include="UtilityBelts\CompPropertiesShieldToggle.cs" />
     <Compile Include="UtilityBelts\CompShieldToggle.cs" />
     <Compile Include="UtilityBelts\Harmony\Harmony_ShieldBelt.cs" />
     <Compile Include="UtilityBelts\Harmony\Harmony_SmokepopBelt.cs" />
