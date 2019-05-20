@@ -2,6 +2,7 @@ using System;
 using System.Collections.Generic;
 using Harmony;
 using RimWorld;
+using UnityEngine;
 using Verse;
 
 namespace FrontierDevelopment.UtilityBelts.Harmony
@@ -26,9 +27,9 @@ namespace FrontierDevelopment.UtilityBelts.Harmony
                 {
                     yield return new Command_Action
                     {
-                        icon = Resources.TriggerSmokepop,
-                        defaultDesc = "FrontierDevelopment.SmokepopBelt.Toggle.Desc".Translate(),
+                        icon = (Texture2D)__instance.Graphic.MatSouth.mainTexture ?? Resources.TriggerSmokepop,
                         defaultLabel = "FrontierDevelopment.SmokepopBelt.Toggle.Label".Translate(),
+                        defaultDesc = "FrontierDevelopment.SmokepopBelt.Toggle.Desc".Translate().Replace("{0}", __instance.LabelShort),
                         activateSound = SoundDef.Named("Click"),
                         action = () =>
                         {

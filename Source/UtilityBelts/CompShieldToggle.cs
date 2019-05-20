@@ -1,6 +1,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using RimWorld;
+using UnityEngine;
 using Verse;
 
 namespace FrontierDevelopment.UtilityBelts
@@ -44,9 +45,9 @@ namespace FrontierDevelopment.UtilityBelts
             {
                 yield return new Command_Toggle
                 {
-                    icon = Resources.ToggleShield,
-                    defaultDesc = "FrontierDevelopment.ShieldBelt.Toggle.Desc".Translate(),
+                    icon = (Texture2D)parent.Graphic.MatSouth.mainTexture ?? Resources.ToggleShield,
                     defaultLabel = "FrontierDevelopment.ShieldBelt.Toggle.Label".Translate(),
+                    defaultDesc = "FrontierDevelopment.ShieldBelt.Toggle.Desc".Translate().Replace("{0}", parent.LabelShort),
                     isActive = () => _enabled,
                     toggleAction = () => _enabled = !_enabled
                 };
