@@ -22,7 +22,7 @@ namespace FrontierDevelopment.UtilityBelts.Harmony
                 }
 
                 // check if this is a smokepop belt since smokepop belt does not have this method (it overrides Apparel)
-                if (smokepopType.IsInstanceOfType(__instance) && __instance.Wearer.Faction == Faction.OfPlayer)
+                if (__instance.Wearer.Faction == Faction.OfPlayer && smokepopType.IsInstanceOfType(__instance))
                 {
                     yield return new Command_Action
                     {
