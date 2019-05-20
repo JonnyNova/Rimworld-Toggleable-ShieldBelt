@@ -1,6 +1,6 @@
 using Verse;
 
-namespace FrontierDevelopments.UtilityBelts.AvoidFriendlyFire
+namespace FrontierDevelopment.UtilityBelts.AvoidFriendlyFire
 {
     // Harmony patch for AvoidFriendlyFire.FireManager
     public static class Harmony_FireManager

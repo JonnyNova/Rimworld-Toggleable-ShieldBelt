@@ -4,7 +4,7 @@ using Harmony;
 using RimWorld;
 using Verse;
 
-namespace FrontierDevelopments.UtilityBelts.Harmony
+namespace FrontierDevelopment.UtilityBelts.Harmony
 {
     public class Harmony_SmokepopBelt
     {
@@ -27,8 +27,8 @@ namespace FrontierDevelopments.UtilityBelts.Harmony
                     yield return new Command_Action
                     {
                         icon = Resources.TriggerSmokepop,
-                        defaultDesc = "FrontierDevelopments.SmokepopBelt.Toggle.Desc".Translate(),
-                        defaultLabel = "FrontierDevelopments.SmokepopBelt.Toggle.Label".Translate(),
+                        defaultDesc = "FrontierDevelopment.SmokepopBelt.Toggle.Desc".Translate(),
+                        defaultLabel = "FrontierDevelopment.SmokepopBelt.Toggle.Label".Translate(),
                         activateSound = SoundDef.Named("Click"),
                         action = () =>
                         {

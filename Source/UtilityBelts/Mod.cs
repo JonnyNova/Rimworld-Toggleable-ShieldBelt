@@ -2,13 +2,13 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Reflection;
-using FrontierDevelopments.UtilityBelts.AvoidFriendlyFire;
+using FrontierDevelopment.UtilityBelts.AvoidFriendlyFire;
 using Harmony;
 using RimWorld;
 using UnityEngine;
 using Verse;
 
-namespace FrontierDevelopments.UtilityBelts
+namespace FrontierDevelopment.UtilityBelts
 {
     public class Mod : Verse.Mod
     {

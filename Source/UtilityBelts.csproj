@@ -7,8 +7,8 @@
     <ProjectGuid>{0c7d659a-fe2a-49a0-9ea6-11524b13c9e0}</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>FrontierDevelopments</RootNamespace>
-    <AssemblyName>FrontierDevelopments-UtilityBelts</AssemblyName>
+    <RootNamespace>FrontierDevelopment</RootNamespace>
+    <AssemblyName>FrontierDevelopment-UtilityBelts</AssemblyName>
     <TargetFrameworkVersion>v3.5</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
     <TargetFrameworkProfile />

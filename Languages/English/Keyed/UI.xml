@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LanguageData>
-    <FrontierDevelopments.ShieldBelt.Toggle.Label>Enable</FrontierDevelopments.ShieldBelt.Toggle.Label>
-    <FrontierDevelopments.ShieldBelt.Toggle.Desc>Enables a worn shield belt</FrontierDevelopments.ShieldBelt.Toggle.Desc>
+    <FrontierDevelopment.ShieldBelt.Toggle.Label>Enable</FrontierDevelopment.ShieldBelt.Toggle.Label>
+    <FrontierDevelopment.ShieldBelt.Toggle.Desc>Enables a worn shield belt</FrontierDevelopment.ShieldBelt.Toggle.Desc>
 
-    <FrontierDevelopments.SmokepopBelt.Toggle.Label>Trigger</FrontierDevelopments.SmokepopBelt.Toggle.Label>
-    <FrontierDevelopments.SmokepopBelt.Toggle.Desc>Manually triggers a smokepop belt</FrontierDevelopments.SmokepopBelt.Toggle.Desc>
+    <FrontierDevelopment.SmokepopBelt.Toggle.Label>Trigger</FrontierDevelopment.SmokepopBelt.Toggle.Label>
+    <FrontierDevelopment.SmokepopBelt.Toggle.Desc>Manually triggers a smokepop belt</FrontierDevelopment.SmokepopBelt.Toggle.Desc>
 </LanguageData>

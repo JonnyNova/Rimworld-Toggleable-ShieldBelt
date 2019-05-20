@@ -3,7 +3,7 @@ using Harmony;
 using RimWorld;
 using Verse;
 
-namespace FrontierDevelopments.UtilityBelts.Harmony
+namespace FrontierDevelopment.UtilityBelts.Harmony
 {
     public class Harmony_ShieldBelt
     {

@@ -3,7 +3,7 @@ using System.Linq;
 using RimWorld;
 using Verse;
 
-namespace FrontierDevelopments.UtilityBelts
+namespace FrontierDevelopment.UtilityBelts
 {
     public class CompPropertiesShieldToggle : CompProperties
     {
@@ -45,8 +45,8 @@ namespace FrontierDevelopments.UtilityBelts
                 yield return new Command_Toggle
                 {
                     icon = Resources.ToggleShield,
-                    defaultDesc = "FrontierDevelopments.ShieldBelt.Toggle.Desc".Translate(),
-                    defaultLabel = "FrontierDevelopments.ShieldBelt.Toggle.Label".Translate(),
+                    defaultDesc = "FrontierDevelopment.ShieldBelt.Toggle.Desc".Translate(),
+                    defaultLabel = "FrontierDevelopment.ShieldBelt.Toggle.Label".Translate(),
                     isActive = () => _enabled,
                     toggleAction = () => _enabled = !_enabled
                 };
