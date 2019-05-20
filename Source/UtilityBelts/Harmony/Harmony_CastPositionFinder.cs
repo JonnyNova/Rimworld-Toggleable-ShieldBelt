@@ -11,7 +11,8 @@ namespace FrontierDevelopment.UtilityBelts.Harmony
         [HarmonyPrefix]
         static bool FailIfToggleOnWithRangedVerb(ref bool __result, CastPositionRequest newReq, ref IntVec3 dest)
         {
-            if (ShieldUtility.HasActiveShield(newReq.caster) && newReq.maxRangeFromTarget > 1.41f)
+            if (ShieldUtility.HasActiveShield(newReq.caster)
+                && (newReq.maxRangeFromTarget > 1.41f || newReq.maxRangeFromLocus > 1.41f))
             {
                 dest = IntVec3.Invalid;
                 __result = false;
