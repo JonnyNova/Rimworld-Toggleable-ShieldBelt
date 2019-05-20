@@ -14,7 +14,6 @@ namespace FrontierDevelopment.UtilityBelts.Harmony
         [HarmonyPatch(typeof(SmokepopBelt), nameof(SmokepopBelt.GetWornGizmos))]
         public class Harmony_ShieldBelt_GetWornGizmos
         {
-            
             public static IEnumerable<Gizmo> Postfix(IEnumerable<Gizmo> __result, SmokepopBelt __instance)
             {
                 foreach (var gizmo in __result)
@@ -33,21 +32,8 @@ namespace FrontierDevelopment.UtilityBelts.Harmony
                         activateSound = SoundDef.Named("Click"),
                         action = () =>
                         {
-                            GenExplosion.DoExplosion(
-                                __instance.Wearer.Position, 
-                                __instance.Wearer.Map, 
-                                __instance.GetStatValue(StatDefOf.SmokepopBeltRadius, true), 
-                                DamageDefOf.Smoke, 
-                                null, 
-                                -1, 
-                                -1f, 
-                                null, 
-                                null, 
-                                null, 
-                                null, 
-                                ThingDefOf.Gas_Smoke, 
-                                1f);
-                            __instance.Destroy();
+                            __instance.CheckPreAbsorbDamage(
+                                new DamageInfo(DamageDefOf.Bullet, 0, weapon: ThingDef.Named("Gun_BoltActionRifle")));
                         }
                     };
                 }
