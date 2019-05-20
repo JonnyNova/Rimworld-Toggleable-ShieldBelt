@@ -1,5 +1,5 @@
-
 using System.Collections.Generic;
+using System.Linq;
 using RimWorld;
 using Verse;
 
@@ -7,6 +7,20 @@ namespace FrontierDevelopments.UtilityBelts
 {
     public class CompShieldToggle : ThingComp
     {
+        public static bool IsEnabled(ThingWithComps shieldBelt)
+        {
+            var comp = shieldBelt.GetComp<CompShieldToggle>();
+            return comp == null || comp.enabled;
+        }
+
+        public static bool IsEnabled(Pawn pawn)
+        {
+            return pawn.apparel.WornApparel
+                .SelectMany(apparel => apparel.AllComps)
+                .OfType<CompShieldToggle>()
+                .Any(toggle => toggle.enabled);
+        }
+
         public bool enabled = true;
 
         public override IEnumerable<Gizmo> CompGetGizmosExtra()

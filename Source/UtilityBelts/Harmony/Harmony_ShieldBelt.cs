@@ -7,12 +7,6 @@ namespace FrontierDevelopments.UtilityBelts.Harmony
 {
     public class Harmony_ShieldBelt
     {
-        static bool IsEnabled(ThingWithComps shieldBelt)
-        {
-            var comp = shieldBelt.GetComp<CompShieldToggle>();
-            return comp == null || comp.enabled;
-        }
-
         [HarmonyPatch(typeof(ShieldBelt), nameof(ShieldBelt.AllowVerbCast))]
         public class Harmony_ShieldBelt_AllowVerbCast
         {
@@ -24,7 +18,7 @@ namespace FrontierDevelopments.UtilityBelts.Harmony
                 LocalTargetInfo targ, 
                 Verb verb)
             {
-                return !IsEnabled(__instance) || __result;
+                return !CompShieldToggle.IsEnabled(__instance) || __result;
             }
         }
 
@@ -35,7 +29,7 @@ namespace FrontierDevelopments.UtilityBelts.Harmony
             [HarmonyPriority(Priority.First + 200)]
             public static bool ShouldAbsorbDamageWithToggle(out bool __result, ShieldBelt __instance)
             {
-                __result = IsEnabled(__instance);
+                __result = CompShieldToggle.IsEnabled(__instance);
                 return __result;
             }
         }
@@ -46,7 +40,7 @@ namespace FrontierDevelopments.UtilityBelts.Harmony
             [HarmonyPostfix]
             public static bool ShouldDisplayWithToggle(bool __result, ShieldBelt __instance)
             {
-                if (!IsEnabled(__instance)) return false;
+                if (!CompShieldToggle.IsEnabled(__instance)) return false;
                 return __result;
             }
         }

@@ -1,6 +1,8 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Reflection;
+using FrontierDevelopments.UtilityBelts.AvoidFriendlyFire;
 using Harmony;
 using RimWorld;
 using UnityEngine;
@@ -16,6 +18,7 @@ namespace FrontierDevelopments.UtilityBelts
         {
             var harmony = HarmonyInstance.Create("FrontierDevelopment.UtilityBelts");
             harmony.PatchAll();
+            EnableAvoidFriendlyFireIntegration(harmony);
             
             Log.Message(ModName + " :: Loading");
         }
@@ -23,6 +26,35 @@ namespace FrontierDevelopments.UtilityBelts
         public override string SettingsCategory()
         {
             return ModName;
+        }
+
+        private static void EnableAvoidFriendlyFireIntegration(HarmonyInstance harmony)
+        {
+            if (ModsConfig.ActiveModsInLoadOrder.Any(m => m.Name == "Avoid Friendly Fire"))
+            {
+                try
+                {
+                    ((Action) (() =>
+                    {
+                        var fireManagerType = Type.GetType("AvoidFriendlyFire.FireManager, AvoidFriendlyFire");
+                        if (fireManagerType == null) return;
+
+                        harmony.Patch(
+                            fireManagerType.GetMethod(
+                                "IsPawnWearingUsefulShield",
+                                BindingFlags.NonPublic | BindingFlags.Instance),
+                            new HarmonyMethod(
+                                typeof(Harmony_FireManager),
+                                nameof(Harmony_FireManager.IsPawnWearingUsefulToggledShield)));
+                        Log.Message(ModName + " :: Loaded Avoid Friendly Fire support");
+
+                    }))();
+                }
+                catch (Exception e)
+                {
+                    Log.Warning(e.Message);
+                }
+            }
         }
 
         private static void AddToggleComps()
