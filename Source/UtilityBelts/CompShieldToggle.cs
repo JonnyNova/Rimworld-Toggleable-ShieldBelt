@@ -18,7 +18,7 @@ namespace FrontierDevelopments.UtilityBelts
         public static bool IsEnabled(ThingWithComps shieldBelt)
         {
             var comp = shieldBelt.GetComp<CompShieldToggle>();
-            return comp == null || comp.enabled;
+            return comp == null || comp._enabled;
         }
 
         public static bool IsEnabled(Pawn pawn)
@@ -26,10 +26,12 @@ namespace FrontierDevelopments.UtilityBelts
             return pawn.apparel.WornApparel
                 .SelectMany(apparel => apparel.AllComps)
                 .OfType<CompShieldToggle>()
-                .Any(toggle => toggle.enabled);
+                .Any(toggle => toggle._enabled);
         }
 
-        public bool enabled = true;
+        private bool _enabled = true;
+
+        public bool Enabled => _enabled;
 
         public override IEnumerable<Gizmo> CompGetGizmosExtra()
         {
@@ -45,29 +47,23 @@ namespace FrontierDevelopments.UtilityBelts
                     icon = Resources.ToggleShield,
                     defaultDesc = "FrontierDevelopments.ShieldBelt.Toggle.Desc".Translate(),
                     defaultLabel = "FrontierDevelopments.ShieldBelt.Toggle.Label".Translate(),
-                    isActive = () => enabled,
-                    toggleAction = () => enabled = !enabled
+                    isActive = () => _enabled,
+                    toggleAction = () => _enabled = !_enabled
                 };
             }
         }
 
         public override void PostExposeData()
         {
-            Scribe_Values.Look(ref enabled, "enabled", true);
+            Scribe_Values.Look(ref _enabled, "enabled", true);
         }
 
         private bool ShouldShowGizmo()
         {
-            var apparel = parent as Apparel;
-            if (apparel != null)
+            switch (parent)
             {
-                var wearer = apparel.Wearer;
-                if (wearer != null)
-                {
-                    return wearer.Faction == Faction.OfPlayer;
-                }
-                return false;
-
+                case Apparel apparel:
+                    return apparel.Wearer?.Faction == Faction.OfPlayer;
             }
             return false;
         }
