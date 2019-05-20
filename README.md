@@ -1,4 +1,4 @@
-# Frontier Developments Utility Belts
+# Frontier Development Utility Belts
 
 ## Features
 
@@ -8,8 +8,11 @@ Allows toggling of shield belts and manually triggering smoke pop belts.
 - English
 
 #### Compatibility:
-- Save file compatible
-- Can be removed from existing saves
+- Existing game compatible
+- Combat Extended
+- Avoid Friendly Fire
+- Spartan Foundry
+- Rimsenal
 
 ## Contributions
 
