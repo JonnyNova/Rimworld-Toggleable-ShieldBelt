@@ -22,14 +22,6 @@ namespace FrontierDevelopment.UtilityBelts
             return comp == null || comp._enabled;
         }
 
-        public static bool IsEnabled(Pawn pawn)
-        {
-            return pawn.apparel.WornApparel
-                .SelectMany(apparel => apparel.AllComps)
-                .OfType<CompShieldToggle>()
-                .Any(toggle => toggle._enabled);
-        }
-
         private bool _enabled = true;
 
         public bool Enabled => _enabled;

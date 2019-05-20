@@ -10,7 +10,7 @@ namespace FrontierDevelopment.UtilityBelts.AvoidFriendlyFire
         {
             __result = false;
             // run normal method is shield is enabled;
-            return CompShieldToggle.IsEnabled(pawn);
+            return ShieldUtility.HasActiveShield(pawn);
         }
     }
 }
