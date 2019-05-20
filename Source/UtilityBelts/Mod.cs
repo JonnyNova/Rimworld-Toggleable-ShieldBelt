@@ -10,56 +10,64 @@ namespace FrontierDevelopments.UtilityBelts
 {
     public class Mod : Verse.Mod
     {
+        private const string ModName = "Frontier Development Utility Belts";
+        
         public Mod(ModContentPack content) : base(content)
         {
-            var harmony = HarmonyInstance.Create("FrontierDevelopments.Toggleable-ShieldBelt");
+            var harmony = HarmonyInstance.Create("FrontierDevelopment.UtilityBelts");
             harmony.PatchAll();
             
-            Log.Message("Frontier Developments Toggleable Shield Belt :: Loading");
+            Log.Message(ModName + " :: Loading");
         }
         
         public override string SettingsCategory()
         {
-            return "Frontier Developments Toggleable Shield Belt";
+            return ModName;
         }
-        
-        [HarmonyPatch(typeof(DefGenerator), "GenerateImpliedDefs_PostResolve")]
-        class Patch_GenerateImpliedDefs_PostResolve
+
+        private static void AddToggleComps()
         {
-            static void Postfix()
+            try
             {
-                try
-                {
-                    var typeShieldBelt = typeof(ShieldBelt);
-                    var names = new List<string>();
+                var typeShieldBelt = typeof(ShieldBelt);
+                var names = new List<string>();
                     
-                    foreach(var def in DefDatabase<ThingDef>.AllDefs)
+                foreach(var def in DefDatabase<ThingDef>.AllDefs)
+                {
+                    try
                     {
-                        try
+                        if (def != null && def.thingClass == typeShieldBelt)
                         {
-                            if (def != null && def.thingClass == typeShieldBelt)
-                            {
-                                def.comps.Add(new CompPropertiesShieldToggle());
-                                if (!def.defName.NullOrEmpty())
-                                    names.Add(def.defName);
-                                else
-                                    names.Add("unknown_defName");
-                            }
-                        }
-                        catch (Exception e)
-                        {
-                            Log.Warning("Frontier Developments Toggleable Shield Belt :: Failed to process def " + def?.defName + ", " + e.Message);
+                            def.comps.Add(new CompPropertiesShieldToggle());
+                            if (!def.defName.NullOrEmpty())
+                                names.Add(def.defName);
+                            else
+                                names.Add("unknown_defName");
                         }
                     }
-                    Log.Message("Frontier Developments Toggleable Shield Belt :: Loaded. Adding shield toggle to: " 
-                                + names.Aggregate("", (current, next) => current + " " + next));
+                    catch (Exception e)
+                    {
+                        Log.Warning(ModName + " :: Failed to process def " + def?.defName + ", " + e.Message);
+                    }
                 }
-                catch (Exception e)
-                {
-                    Log.Warning(
-                        "Frontier Developments Toggleable Shield Belt :: Failed to patch shield belts with: " +
-                        e.Message);
-                }
+                Log.Message(ModName + " :: Loaded. Adding shield toggle to: " 
+                            + names.Aggregate("", (current, next) => current + " " + next));
+            }
+            catch (Exception e)
+            {
+                Log.Warning(
+                    ModName + " :: Failed to patch shield belts with: " +
+                    e.Message);
+            }
+        }
+
+        [HarmonyPatch(typeof(DefGenerator), nameof(DefGenerator.GenerateImpliedDefs_PostResolve))]
+        class Patch_GenerateImpliedDefs_PostResolve
+        {
+            [HarmonyPostfix]
+            static void LoadModContent()
+            {
+                AddToggleComps();
             }
         }
     }
