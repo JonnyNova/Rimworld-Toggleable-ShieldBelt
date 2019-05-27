@@ -19,8 +19,6 @@ namespace FrontierDevelopment.UtilityBelts
             var harmony = HarmonyInstance.Create("FrontierDevelopment.UtilityBelts");
             harmony.PatchAll();
             EnableAvoidFriendlyFireIntegration(harmony);
-            
-            Log.Message(ModName + " :: Loading");
         }
         
         public override string SettingsCategory()
@@ -52,7 +50,6 @@ namespace FrontierDevelopment.UtilityBelts
                 }
                 catch (Exception e)
                 {
-                    Log.Warning(e.Message);
                 }
             }
         }
@@ -74,12 +71,11 @@ namespace FrontierDevelopment.UtilityBelts
                             if (!def.defName.NullOrEmpty())
                                 names.Add(def.defName);
                             else
-                                names.Add("unknown_defName");
+                                names.Add("<no defname>");
                         }
                     }
                     catch (Exception e)
                     {
-                        Log.Warning(ModName + " :: Failed to process def " + def?.defName + ", " + e.Message);
                     }
                 }
                 Log.Message(ModName + " :: Loaded. Adding shield toggle to: " 
