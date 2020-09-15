@@ -1,9 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Reflection;
-using FrontierDevelopment.UtilityBelts.AvoidFriendlyFire;
-using Harmony;
+using HarmonyLib;
 using RimWorld;
 using UnityEngine;
 using Verse;
@@ -12,46 +10,17 @@ namespace FrontierDevelopment.UtilityBelts
 {
     public class Mod : Verse.Mod
     {
-        private const string ModName = "Frontier Development Utility Belts";
+        public const string ModName = "Frontier Developments Utility Belts";
         
         public Mod(ModContentPack content) : base(content)
         {
-            var harmony = HarmonyInstance.Create("FrontierDevelopment.UtilityBelts");
+            var harmony = new HarmonyLib.Harmony("FrontierDevelopments.UtilityBelts");
             harmony.PatchAll();
-            EnableAvoidFriendlyFireIntegration(harmony);
         }
         
         public override string SettingsCategory()
         {
             return ModName;
-        }
-
-        private static void EnableAvoidFriendlyFireIntegration(HarmonyInstance harmony)
-        {
-            if (ModsConfig.ActiveModsInLoadOrder.Any(m => m.Name == "Avoid Friendly Fire"))
-            {
-                try
-                {
-                    ((Action) (() =>
-                    {
-                        var fireManagerType = Type.GetType("AvoidFriendlyFire.FireManager, AvoidFriendlyFire");
-                        if (fireManagerType == null) return;
-
-                        harmony.Patch(
-                            fireManagerType.GetMethod(
-                                "IsPawnWearingUsefulShield",
-                                BindingFlags.NonPublic | BindingFlags.Instance),
-                            new HarmonyMethod(
-                                typeof(Harmony_FireManager),
-                                nameof(Harmony_FireManager.IsPawnWearingUsefulToggledShield)));
-                        Log.Message(ModName + " :: Loaded Avoid Friendly Fire support");
-
-                    }))();
-                }
-                catch (Exception e)
-                {
-                }
-            }
         }
 
         private static void AddToggleComps()

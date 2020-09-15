@@ -1,5 +1,5 @@
 using System.Collections.Generic;
-using Harmony;
+using HarmonyLib;
 using RimWorld;
 using Verse;
 
@@ -10,7 +10,8 @@ namespace FrontierDevelopment.UtilityBelts.Harmony
         [HarmonyPatch(typeof(ShieldBelt), nameof(ShieldBelt.AllowVerbCast))]
         public class Harmony_ShieldBelt_AllowVerbCast
         {
-            public static bool Postfix(
+            [HarmonyPostfix]
+            public static bool EnableShootingOutOnDisabledShields(
                 bool __result, 
                 RimWorld.ShieldBelt __instance, 
                 IntVec3 root, 
@@ -44,11 +45,15 @@ namespace FrontierDevelopment.UtilityBelts.Harmony
                 return __result;
             }
         }
+        
+        // System.Linq.Enumerable.WhereListIterator<Verse.Pawn> doesn't implement interface
+        // System.Collections.Generic.ICollection<Verse.Pawn>
 
         [HarmonyPatch(typeof(ShieldBelt), nameof(ShieldBelt.GetWornGizmos))]
         public class Harmony_ShieldBelt_GetWornGizmos
         {
-            public static IEnumerable<Gizmo> Postfix(IEnumerable<Gizmo> __result, RimWorld.ShieldBelt __instance)
+            [HarmonyPostfix]
+            public static IEnumerable<Gizmo> ShowToggleGizmo(IEnumerable<Gizmo> __result, ShieldBelt __instance)
             {
                 foreach (var gizmo in __result)
                 {

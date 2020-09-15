@@ -2,7 +2,4 @@
 <LanguageData>
     <FrontierDevelopment.ShieldBelt.Toggle.Label>Shield</FrontierDevelopment.ShieldBelt.Toggle.Label>
     <FrontierDevelopment.ShieldBelt.Toggle.Desc>Toggles shield on {0}</FrontierDevelopment.ShieldBelt.Toggle.Desc>
-
-    <FrontierDevelopment.SmokepopBelt.Toggle.Label>Trigger</FrontierDevelopment.SmokepopBelt.Toggle.Label>
-    <FrontierDevelopment.SmokepopBelt.Toggle.Desc>Manually triggers {0}</FrontierDevelopment.SmokepopBelt.Toggle.Desc>
 </LanguageData>

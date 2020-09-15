@@ -1,16 +1,16 @@
-using System.Collections.Generic;
 using RimWorld;
-using UnityEngine;
 using Verse;
 
 namespace FrontierDevelopment.UtilityBelts
 {
-    public class FireFoamBelt : Apparel
+    public class FoampopBelt : Apparel
     {
         // same as smokepop belt
         private const float ApparelScorePerBeltRadius = 23f / 500f;
 
-        private float Radius => this.GetStatValue(UtilityBeltsDefOf.FireFoamBeltRadius);
+        private float Radius => this.GetStatValue(UtilityBeltsDefOf.FoampopPackRadius);
+
+        private CompReloadable Reloadable => this.TryGetComp<CompReloadable>();
 
         public override bool CheckPreAbsorbDamage(DamageInfo dinfo)
         {
@@ -30,36 +30,18 @@ namespace FrontierDevelopment.UtilityBelts
             }
         }
 
-        public override IEnumerable<Gizmo> GetWornGizmos()
-        {
-            foreach (var gizmo in base.GetWornGizmos())
-            {
-                yield return gizmo;
-            }
-
-            if (Wearer?.Faction == Faction.OfPlayer)
-            {
-                yield return new Command_Action
-                {
-                    icon = (Texture2D) Graphic.MatSouth.mainTexture ?? Resources.TriggerSmokepop,
-                    defaultLabel = "FrontierDevelopment.SmokepopBelt.Toggle.Label".Translate(),
-                    defaultDesc = "FrontierDevelopment.SmokepopBelt.Toggle.Desc".Translate().Replace("{0}", LabelShort),
-                    activateSound = SoundDef.Named("Click"),
-                    action = () => Trigger(Wearer)
-                };
-            }
-        }
-
         public override float GetSpecialApparelScoreOffset()
         {
             return Radius * ApparelScorePerBeltRadius;
         }
 
-        private void Trigger(Thing instigator)
+        public void Trigger(Thing instigator)
         {
+            var reloadable = Reloadable;
+            if (!reloadable.CanBeUsed) return;
             GenExplosion.DoExplosion(
-                Wearer?.Position ?? Position, 
-                Wearer?.Map ?? Map, 
+                Wearer?.Position ?? Position,
+                Wearer?.Map ?? Map,
                 Radius,
                 DamageDefOf.Extinguish,
                 instigator,
@@ -67,8 +49,7 @@ namespace FrontierDevelopment.UtilityBelts
                 postExplosionSpawnThingDef: ThingDefOf.Filth_FireFoam,
                 applyDamageToExplosionCellsNeighbors: true,
                 postExplosionSpawnThingCount: 3);
-            
-            Destroy();
+            reloadable.UsedOnce();
         }
     }
 }

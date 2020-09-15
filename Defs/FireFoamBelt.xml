@@ -2,15 +2,15 @@
 <Defs>
 
     <StatDef>
-        <defName>FireFoamBeltRadius</defName>
-        <label>Firefoam belt radius</label>
-        <description>The area covered with firefoam when a firefoam belt triggers.</description>
+        <defName>FoampopPackRadius</defName>
+        <label>Foampop pack radius</label>
+        <description>The radius of an area covered with firefoam when a foampop pack triggers.</description>
         <category>Apparel</category>
-        <defaultBaseValue>2</defaultBaseValue>
         <minValue>0</minValue>
         <toStringStyle>FloatOne</toStringStyle>
         <formatString>{0} c</formatString>
         <showIfUndefined>false</showIfUndefined>
+        <displayPriorityInCategory>60</displayPriorityInCategory>
         <parts>
             <li Class="StatPart_Quality">
                 <factorAwful>0.84</factorAwful>
@@ -25,10 +25,10 @@
     </StatDef>
 
     <ThingDef ParentName="ApparelBase">
-        <thingClass>FrontierDevelopment.UtilityBelts.FireFoamBelt</thingClass>
-        <defName>Apparel_FireFoamBelt</defName>
-        <label>firefoam belt</label>
-        <description>An automatic single-use fire foam deployer. Will trigger if the belt or the wearer catches fire.</description>
+        <thingClass>FrontierDevelopment.UtilityBelts.FoampopBelt</thingClass>
+        <defName>Apparel_FoampopBelt</defName>
+        <label>foampop belt</label>
+        <description>An automatic firefoam deployer. Will trigger if the belt or the wearer catches fire.</description>
         <techLevel>Industrial</techLevel>
         <recipeMaker>
             <unfinishedThingDef>UnfinishedBelt</unfinishedThingDef>
@@ -36,7 +36,7 @@
             <recipeUsers>
                 <li>TableMachining</li>
             </recipeUsers>
-            <workSpeedStat>SmithingSpeed</workSpeedStat>
+            <workSpeedStat>GeneralLaborSpeed</workSpeedStat>
             <workSkill>Crafting</workSkill>
             <effectWorking>Smith</effectWorking>
             <soundWorking>Recipe_Smith</soundWorking>
@@ -44,6 +44,29 @@
                 <Crafting>3</Crafting>
             </skillRequirements>
         </recipeMaker>
+        <comps>
+            <li Class="CompProperties_Reloadable">
+                <maxCharges>3</maxCharges>
+                <ammoDef>Steel</ammoDef>
+                <ammoCountToRefill>10</ammoCountToRefill>
+                <baseReloadTicks>60</baseReloadTicks>
+                <soundReload>Standard_Reload</soundReload>
+                <hotKey>Misc4</hotKey>
+                <chargeNoun>foampop</chargeNoun>
+                <displayGizmoWhileUndrafted>false</displayGizmoWhileUndrafted>
+            </li>
+        </comps>
+        <verbs>
+            <li>
+                <verbClass>FrontierDevelopments.UtilityBelts.Verb_FoamPop</verbClass>
+                <label>pop foam</label>
+                <violent>false</violent>
+                <hasStandardCommand>true</hasStandardCommand>
+                <targetable>false</targetable>
+                <nonInterruptingSelfCast>true</nonInterruptingSelfCast>
+                <onlyManualCast>true</onlyManualCast>
+            </li>
+        </verbs>
         <costList>
             <ComponentIndustrial>1</ComponentIndustrial>
             <Steel>20</Steel>
@@ -57,11 +80,11 @@
             <WorkToMake>1200</WorkToMake>
             <Mass>3</Mass>
             <Flammability>0.4</Flammability>
-            <FireFoamBeltRadius>2</FireFoamBeltRadius>
+            <FoampopPackRadius>2</FoampopPackRadius>
             <EquipDelay>2</EquipDelay>
         </statBases>
         <thingCategories>
-            <li>Apparel</li>
+            <li>ApparelUtility</li>
         </thingCategories>
         <generateAllowChance>0.15</generateAllowChance>
         <apparel>
@@ -80,20 +103,20 @@
             <options>
                 <li>
                     <weight>10</weight>
-                    <only>(0.6,0.4,0.4,1)</only>
+                    <only>(0.8,0.8,0.8,1)</only>
                 </li>
                 <li>
                     <weight>10</weight>
-                    <only>(0.6,0.6,0.4,1)</only>
+                    <only>(0.8,0.8,0.8,1)</only>
                 </li>
                 <li>
                     <weight>6</weight>
-                    <min>(0.3,0.3,0.3,1)</min>
-                    <max>(0.5,0.5,0.5,1)</max>
+                    <min>(0.6,0.6,0.6,1)</min>
+                    <max>(0.8,0.8,0.8,1)</max>
                 </li>
                 <li>
                     <weight>10</weight>
-                    <only>(0.33,0.33,0.33,1)</only>
+                    <only>(0.66,0.66,0.66,1)</only>
                 </li>
             </options>
         </colorGenerator>

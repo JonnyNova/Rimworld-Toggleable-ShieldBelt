@@ -5,7 +5,7 @@ namespace FrontierDevelopment
     [DefOf]
     public static class UtilityBeltsDefOf
     {
-        public static StatDef FireFoamBeltRadius;
+        public static StatDef FoampopPackRadius;
         
         static UtilityBeltsDefOf()
         {

@@ -4,12 +4,12 @@ using System.Runtime.InteropServices;
 // General Information about an assembly is controlled through the following 
 // set of attributes. Change these attribute values to modify the information
 // associated with an assembly.
-[assembly: AssemblyTitle("FrontierDevelopment-UtilityBelts")]
+[assembly: AssemblyTitle("FrontierDevelopments-UtilityBelts-AvoidFriendlyFire")]
 [assembly: AssemblyDescription("")]
 [assembly: AssemblyConfiguration("")]
 [assembly: AssemblyCompany("")]
-[assembly: AssemblyProduct("FrontierDevelopment-UtilityBelts")]
-[assembly: AssemblyCopyright("Copyright ©  2019")]
+[assembly: AssemblyProduct("FrontierDevelopments-UtilityBelts-AvoidFriendlyFire")]
+[assembly: AssemblyCopyright("Copyright © 2020")]
 [assembly: AssemblyTrademark("")]
 [assembly: AssemblyCulture("")]
 
@@ -19,7 +19,7 @@ using System.Runtime.InteropServices;
 [assembly: ComVisible(false)]
 
 // The following GUID is for the ID of the typelib if this project is exposed to COM
-[assembly: Guid("0c7d659a-fe2a-49a0-9ea6-11524b13c9e0")]
+[assembly: Guid("ffd2563b-258e-4908-aee6-818b5c547168")]
 
 // Version information for an assembly consists of the following four values:
 //
@@ -30,5 +30,5 @@ using System.Runtime.InteropServices;
 //
 // You can specify all the values or you can default the Build and Revision Numbers 
 // by using the '*' as shown below:
-[assembly: AssemblyVersion("1.0.0.2231")]
-[assembly: AssemblyFileVersion("1.0.0.2231")]
+[assembly: AssemblyVersion("1.0.0.2753")]
+[assembly: AssemblyFileVersion("1.0.0.2753")]

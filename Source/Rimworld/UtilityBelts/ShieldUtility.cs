@@ -23,9 +23,9 @@ namespace FrontierDevelopment.UtilityBelts
             return false;
         }
 
-        public static IEnumerable<Pawn> FilterOutToggledOffShieldUsers(IEnumerable<Pawn> pawns)
+        public static List<Pawn> FilterOutToggledOffShieldUsers(List<Pawn> pawns)
         {
-            return pawns.Where(HasActiveShield);
+            return pawns.Where(HasActiveShield).ToList();
         }
     }
 }

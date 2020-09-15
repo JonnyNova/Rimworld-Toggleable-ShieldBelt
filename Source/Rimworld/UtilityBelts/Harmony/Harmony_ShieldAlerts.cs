@@ -1,7 +1,7 @@
 using System.Collections.Generic;
 using System.Reflection;
 using System.Reflection.Emit;
-using Harmony;
+using HarmonyLib;
 using RimWorld;
 
 namespace FrontierDevelopment.UtilityBelts.Harmony
@@ -13,7 +13,7 @@ namespace FrontierDevelopment.UtilityBelts.Harmony
             foreach (var instruction in instructions)
             {
                 yield return instruction;
-                if (instruction.opcode == OpCodes.Call && instruction.operand == method)
+                if (instruction.opcode == OpCodes.Call && (MethodInfo)instruction.operand == method)
                 {
                     yield return new CodeInstruction(
                         OpCodes.Call, 
@@ -43,7 +43,7 @@ namespace FrontierDevelopment.UtilityBelts.Harmony
         static class RangedUsers
         {
             [HarmonyTranspiler]
-            static IEnumerable<CodeInstruction> lala(IEnumerable<CodeInstruction> instructions)
+            static IEnumerable<CodeInstruction> ExcludeToggledOffShieldUsers(IEnumerable<CodeInstruction> instructions)
             {
                 return ApplyPatch(
                     instructions, 
