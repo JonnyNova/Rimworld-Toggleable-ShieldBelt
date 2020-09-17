@@ -58,14 +58,19 @@
   <ItemGroup>
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="UtilityBelts\CompShieldToggle.cs" />
+    <Compile Include="UtilityBelts\ExplosiveBelt.cs" />
     <Compile Include="UtilityBelts\FoampopBelt.cs" />
     <Compile Include="UtilityBelts\Harmony\Harmony_CastPositionFinder.cs" />
+    <Compile Include="UtilityBelts\Harmony\Harmony_Pawn_ApparelTracker.cs" />
     <Compile Include="UtilityBelts\Harmony\Harmony_ShieldAlerts.cs" />
     <Compile Include="UtilityBelts\Harmony\Harmony_ShieldBelt.cs" />
     <Compile Include="UtilityBelts\Harmony\Harmony_WorkGiver_HunterHunt.cs" />
     <Compile Include="UtilityBelts\Mod.cs" />
     <Compile Include="UtilityBelts\ShieldUtility.cs" />
+    <Compile Include="UtilityBelts\ThoughtWorker_ExplosiveBeltSelf.cs" />
+    <Compile Include="UtilityBelts\ThoughtWorker_ExplosiveBeltOther.cs" />
     <Compile Include="UtilityBelts\UtilityBeltsDefOf.cs" />
+    <Compile Include="UtilityBelts\Verb_ExplosiveBelt.cs" />
     <Compile Include="UtilityBelts\Verb_FoamPop.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

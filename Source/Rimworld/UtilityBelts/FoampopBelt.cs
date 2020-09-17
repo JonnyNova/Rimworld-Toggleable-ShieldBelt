@@ -1,7 +1,7 @@
 using RimWorld;
 using Verse;
 
-namespace FrontierDevelopment.UtilityBelts
+namespace FrontierDevelopments.UtilityBelts
 {
     public class FoampopBelt : Apparel
     {
