@@ -1,10 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
 <Defs>
-
     <StatDef>
-        <defName>FoampopPackRadius</defName>
-        <label>Foampop pack radius</label>
-        <description>The radius of an area covered with firefoam when a foampop pack triggers.</description>
+        <defName>ExplosiveBeltRadius</defName>
+        <label>Explosive belt radius</label>
+        <description>The explosion radius when the belt is triggered.</description>
         <category>Apparel</category>
         <minValue>0</minValue>
         <toStringStyle>FloatOne</toStringStyle>
@@ -25,14 +24,14 @@
     </StatDef>
 
     <ThingDef ParentName="ApparelBase">
-        <thingClass>FrontierDevelopments.UtilityBelts.FoampopBelt</thingClass>
-        <defName>Apparel_FoampopBelt</defName>
-        <label>foampop belt</label>
-        <description>An automatic firefoam deployer. Will trigger if the belt or the wearer catches fire.</description>
+        <thingClass>FrontierDevelopments.UtilityBelts.ExplosiveBelt</thingClass>
+        <defName>Apparel_ExplosiveBelt</defName>
+        <label>explosive belt</label>
+        <description>A belt loaded with high-explosives and a dead mans switch. It nerve racking to wear and it can explode if shot.</description>
         <techLevel>Industrial</techLevel>
         <recipeMaker>
             <unfinishedThingDef>UnfinishedBelt</unfinishedThingDef>
-            <researchPrerequisite>Firefoam</researchPrerequisite>
+            <researchPrerequisite>Mortars</researchPrerequisite>
             <recipeUsers>
                 <li>TableMachining</li>
             </recipeUsers>
@@ -41,14 +40,14 @@
             <effectWorking>Smith</effectWorking>
             <soundWorking>Recipe_Smith</soundWorking>
             <skillRequirements>
-                <Crafting>3</Crafting>
+                <Crafting>5</Crafting>
             </skillRequirements>
         </recipeMaker>
         <comps>
             <li Class="CompProperties_Reloadable">
-                <maxCharges>3</maxCharges>
-                <ammoDef>Steel</ammoDef>
-                <ammoCountToRefill>10</ammoCountToRefill>
+                <maxCharges>1</maxCharges>
+                <ammoDef>Chemfuel</ammoDef>
+                <ammoCountToRefill>20</ammoCountToRefill>
                 <baseReloadTicks>60</baseReloadTicks>
                 <soundReload>Standard_Reload</soundReload>
                 <hotKey>Misc4</hotKey>
@@ -58,9 +57,9 @@
         </comps>
         <verbs>
             <li>
-                <verbClass>FrontierDevelopments.UtilityBelts.Verb_FoamPop</verbClass>
-                <label>pop foam</label>
-                <violent>false</violent>
+                <verbClass>FrontierDevelopments.UtilityBelts.Verb_ExplosiveBelt</verbClass>
+                <label>trigger explosives</label>
+                <violent>true</violent>
                 <hasStandardCommand>true</hasStandardCommand>
                 <targetable>false</targetable>
                 <nonInterruptingSelfCast>true</nonInterruptingSelfCast>
@@ -68,8 +67,8 @@
             </li>
         </verbs>
         <costList>
-            <ComponentIndustrial>1</ComponentIndustrial>
-            <Steel>20</Steel>
+            <Steel>10</Steel>
+            <Chemfuel>15</Chemfuel>
         </costList>
         <graphicData>
             <texPath>Things/Pawn/Humanlike/Apparel/SmokepopBelt/SmokepopBelt</texPath>
@@ -80,13 +79,13 @@
             <WorkToMake>1200</WorkToMake>
             <Mass>3</Mass>
             <Flammability>0.4</Flammability>
-            <FoampopPackRadius>2</FoampopPackRadius>
+            <ExplosiveBeltRadius>3</ExplosiveBeltRadius>
             <EquipDelay>2</EquipDelay>
         </statBases>
         <thingCategories>
             <li>ApparelUtility</li>
         </thingCategories>
-        <generateAllowChance>0.15</generateAllowChance>
+        <generateAllowChance>0.01</generateAllowChance>
         <apparel>
             <careIfWornByCorpse>false</careIfWornByCorpse>
             <bodyPartGroups>
@@ -103,23 +102,72 @@
             <options>
                 <li>
                     <weight>10</weight>
-                    <only>(0.8,0.8,0.8,1)</only>
+                    <only>(0.8,0.2,0.2,1)</only>
                 </li>
                 <li>
                     <weight>10</weight>
-                    <only>(0.8,0.8,0.8,1)</only>
+                    <only>(0.8,0.2,0.2,1)</only>
                 </li>
                 <li>
                     <weight>6</weight>
-                    <min>(0.6,0.6,0.6,1)</min>
-                    <max>(0.8,0.8,0.8,1)</max>
+                    <min>(0.6,0.15,0.15,1)</min>
+                    <max>(0.8,0.2,0.2,1)</max>
                 </li>
                 <li>
                     <weight>10</weight>
-                    <only>(0.66,0.66,0.66,1)</only>
+                    <only>(0.66,0.15,0.15,1)</only>
                 </li>
             </options>
         </colorGenerator>
     </ThingDef>
+
+    <ThoughtDef>
+        <defName>ExplosiveBeltSad</defName>
+        <workerClass>FrontierDevelopments.UtilityBelts.ThoughtWorker_ExplosiveBeltSelf</workerClass>
+        <validWhileDespawned>true</validWhileDespawned>
+        <stages>
+            <li>
+                <label>I'm wired to blow</label>
+                <description>Any moment could be it...</description>
+                <baseMoodEffect>-5</baseMoodEffect>
+            </li>
+        </stages>
+        <nullifyingTraits>
+            <li>Bloodlust</li>
+            <li>Psychopath</li>
+        </nullifyingTraits>
+    </ThoughtDef>
+
+    <ThoughtDef>
+        <defName>ExplosiveBeltHappy</defName>
+        <workerClass>FrontierDevelopments.UtilityBelts.ThoughtWorker_ExplosiveBeltSelf</workerClass>
+        <validWhileDespawned>true</validWhileDespawned>
+        <stages>
+            <li>
+                <label>I'm wired to blow!</label>
+                <description>Any moment could be it!</description>
+                <baseMoodEffect>3</baseMoodEffect>
+            </li>
+        </stages>
+        <requiredTraits>
+            <li>Bloodlust</li>
+        </requiredTraits>
+    </ThoughtDef>
+
+    <ThoughtDef>
+        <defName>ExplosiveBeltOther</defName>
+        <workerClass>FrontierDevelopments.UtilityBelts.ThoughtWorker_ExplosiveBeltOther</workerClass>
+        <validWhileDespawned>true</validWhileDespawned>
+        <stages>
+            <li>
+                <label>Someone is wired to blow!</label>
+                <description>I hope I get to see it!</description>
+                <baseMoodEffect>1</baseMoodEffect>
+            </li>
+        </stages>
+        <requiredTraits>
+            <li>Bloodlust</li>
+        </requiredTraits>
+    </ThoughtDef>
     
 </Defs>
