@@ -1,28 +1,25 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
-using HarmonyLib;
+using HugsLib;
 using RimWorld;
 using UnityEngine;
 using Verse;
 
 namespace FrontierDevelopment.UtilityBelts
 {
-    public class Mod : Verse.Mod
+    public class Mod : ModBase
     {
-        public const string ModName = "Frontier Developments Utility Belts";
-        
-        public Mod(ModContentPack content) : base(content)
-        {
-            var harmony = new HarmonyLib.Harmony("FrontierDevelopments.UtilityBelts");
-            harmony.PatchAll();
-        }
-        
-        public override string SettingsCategory()
-        {
-            return ModName;
-        }
+        public override string ModIdentifier => "FrontierDevelopments-UtilityBelts";
 
+        public const string ModName = "Frontier Developments Utility Belts";
+
+        public override void DefsLoaded()
+        {
+            AddToggleComps();
+            FrontierDevelopments.UtilityBelts.ModSettings.Init(Settings);
+        }
+        
         private static void AddToggleComps()
         {
             try
@@ -55,16 +52,6 @@ namespace FrontierDevelopment.UtilityBelts
                 Log.Warning(
                     ModName + " :: Failed to patch shield belts with: " +
                     e.Message);
-            }
-        }
-
-        [HarmonyPatch(typeof(DefGenerator), nameof(DefGenerator.GenerateImpliedDefs_PostResolve))]
-        class Patch_GenerateImpliedDefs_PostResolve
-        {
-            [HarmonyPostfix]
-            static void LoadModContent()
-            {
-                AddToggleComps();
             }
         }
     }

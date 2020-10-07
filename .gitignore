@@ -8,3 +8,5 @@
 
 Assemblies/
 !Assemblies/0Harmony.dll
+
+*.sln.DotSettings.user
