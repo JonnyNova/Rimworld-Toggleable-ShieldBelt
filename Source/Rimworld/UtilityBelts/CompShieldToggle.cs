@@ -1,5 +1,4 @@
 using System.Collections.Generic;
-using System.Linq;
 using RimWorld;
 using UnityEngine;
 using Verse;
@@ -26,9 +25,9 @@ namespace FrontierDevelopment.UtilityBelts
 
         public bool Enabled => _enabled;
 
-        public override IEnumerable<Gizmo> CompGetGizmosExtra()
+        public override IEnumerable<Gizmo> CompGetWornGizmosExtra()
         {
-            foreach (var gizmo in base.CompGetGizmosExtra())
+            foreach (var gizmo in base.CompGetWornGizmosExtra())
             {
                 yield return gizmo;
             }
