@@ -1,6 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
+﻿using System.Linq;
 using HugsLib;
 using RimWorld;
 using UnityEngine;
@@ -22,37 +20,16 @@ namespace FrontierDevelopment.UtilityBelts
         
         private static void AddToggleComps()
         {
-            try
-            {
-                var typeShieldBelt = typeof(ShieldBelt);
-                var names = new List<string>();
-                    
-                foreach(var def in DefDatabase<ThingDef>.AllDefs)
+            var typeShieldBelt = typeof(ShieldBelt);
+            var names = DefDatabase<ThingDef>.AllDefs
+                .Where(def => def?.thingClass == typeShieldBelt)
+                .Select( def =>
                 {
-                    try
-                    {
-                        if (def != null && def.thingClass == typeShieldBelt)
-                        {
-                            def.comps.Add(new CompPropertiesShieldToggle());
-                            if (!def.defName.NullOrEmpty())
-                                names.Add(def.defName);
-                            else
-                                names.Add("<no defname>");
-                        }
-                    }
-                    catch (Exception e)
-                    {
-                    }
-                }
-                Log.Message(ModName + " :: Loaded. Adding shield toggle to: " 
-                            + names.Aggregate("", (current, next) => current + " " + next));
-            }
-            catch (Exception e)
-            {
-                Log.Warning(
-                    ModName + " :: Failed to patch shield belts with: " +
-                    e.Message);
-            }
+                    def.comps.Add(new CompPropertiesShieldToggle());
+                    return def.defName;
+                });
+            Log.Message(ModName + " :: Loaded. Adding shield toggle to: " 
+                                + names.Aggregate("", (current, next) => current + " " + next));
         }
     }
     
