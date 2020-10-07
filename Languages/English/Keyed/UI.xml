@@ -2,4 +2,7 @@
 <LanguageData>
     <FrontierDevelopment.ShieldBelt.Toggle.Label>Shield</FrontierDevelopment.ShieldBelt.Toggle.Label>
     <FrontierDevelopment.ShieldBelt.Toggle.Desc>Toggles shield on {0}</FrontierDevelopment.ShieldBelt.Toggle.Desc>
+    
+    <FrontierDevelopments.UtilityBelts.Settings.ShieldRechargeFromFlickOn.Label>Shield belts need recharge when being flicked back on</FrontierDevelopments.UtilityBelts.Settings.ShieldRechargeFromFlickOn.Label>
+    <FrontierDevelopments.UtilityBelts.Settings.ShieldRechargeFromFlickOn.Description>Enable to require shield belts to recharge like if they were broken when they are flicked back on.</FrontierDevelopments.UtilityBelts.Settings.ShieldRechargeFromFlickOn.Description>
 </LanguageData>

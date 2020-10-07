@@ -15,7 +15,7 @@ namespace FrontierDevelopment.UtilityBelts
         public override void DefsLoaded()
         {
             AddToggleComps();
-            FrontierDevelopments.UtilityBelts.ModSettings.Init(Settings);
+            FrontierDevelopments.UtilityBelts.Settings.Init(Settings);
         }
         
         private static void AddToggleComps()

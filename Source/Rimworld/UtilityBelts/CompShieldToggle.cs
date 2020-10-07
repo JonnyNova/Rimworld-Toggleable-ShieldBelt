@@ -1,4 +1,8 @@
+using System;
 using System.Collections.Generic;
+using System.Reflection;
+using FrontierDevelopments.UtilityBelts;
+using HarmonyLib;
 using RimWorld;
 using UnityEngine;
 using Verse;
@@ -15,6 +19,8 @@ namespace FrontierDevelopment.UtilityBelts
 
     public class CompShieldToggle : ThingComp
     {
+        private static MethodInfo ShieldBeltBreak = AccessTools.Method(typeof(ShieldBelt), "Break");
+        
         public static bool IsEnabled(ThingWithComps shieldBelt)
         {
             var comp = shieldBelt.GetComp<CompShieldToggle>();
@@ -24,6 +30,23 @@ namespace FrontierDevelopment.UtilityBelts
         private bool _enabled = true;
 
         public bool Enabled => _enabled;
+
+        private ShieldBelt Parent => (ShieldBelt) parent;
+
+        private void Break()
+        {
+            if(Parent.ShieldState == ShieldState.Active) 
+                ShieldBeltBreak.Invoke(Parent, new object[]{});
+        }
+
+        private void HandleToggle()
+        {
+            _enabled = !_enabled;
+            if (!_enabled && Settings.ShieldRechargeFromFlickOn)
+            {
+                Break();
+            }
+        }
 
         public override IEnumerable<Gizmo> CompGetWornGizmosExtra()
         {
@@ -40,14 +63,14 @@ namespace FrontierDevelopment.UtilityBelts
                     defaultLabel = "FrontierDevelopment.ShieldBelt.Toggle.Label".Translate(),
                     defaultDesc = "FrontierDevelopment.ShieldBelt.Toggle.Desc".Translate().Replace("{0}", parent.LabelShort),
                     isActive = () => _enabled,
-                    toggleAction = () => _enabled = !_enabled
+                    toggleAction = HandleToggle
                 };
             }
         }
 
         public override void PostExposeData()
         {
-            Scribe_Values.Look(ref _enabled, "enabled", true);
+            Scribe_Values.Look(ref _enabled, "shieldToggleEnabled", true);
         }
 
         private bool ShouldShowGizmo()

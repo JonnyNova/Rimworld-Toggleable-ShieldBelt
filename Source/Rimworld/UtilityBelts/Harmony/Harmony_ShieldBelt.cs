@@ -7,6 +7,11 @@ namespace FrontierDevelopment.UtilityBelts.Harmony
 {
     public class Harmony_ShieldBelt
     {
+        private static bool IsOnline(ShieldBelt belt)
+        {
+            return CompShieldToggle.IsEnabled(belt) && belt.ShieldState == ShieldState.Active;
+        }
+        
         [HarmonyPatch(typeof(ShieldBelt), nameof(ShieldBelt.AllowVerbCast))]
         public class Harmony_ShieldBelt_AllowVerbCast
         {
@@ -19,7 +24,7 @@ namespace FrontierDevelopment.UtilityBelts.Harmony
                 LocalTargetInfo targ, 
                 Verb verb)
             {
-                return !CompShieldToggle.IsEnabled(__instance) || __result;
+                return !IsOnline(__instance) || __result;
             }
         }
 
